@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk17'
+        maven 'maven3'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/ashu1-ux/MY-project-CICD.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+    }
+}
