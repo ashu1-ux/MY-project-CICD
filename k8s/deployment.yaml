@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: my-app           # <--- This MUST be my-app
+  namespace: test-app    # <--- This MUST match your ArgoCD destination
   labels:
     app: my-app
 spec:
@@ -16,6 +17,6 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: nginx:latest   # 🔥 replace this with your Docker image
+          image: nginx:latest 
           ports:
             - containerPort: 80
